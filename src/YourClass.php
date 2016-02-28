@@ -1,4 +1,5 @@
-<?php namespace VendorName\PackageName;
+<?php namespace Buonzz\Template;
+
 /**
 *  A sample class
 *

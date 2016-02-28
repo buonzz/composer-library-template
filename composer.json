@@ -1,24 +1,24 @@
 {
-    "name": "vendorname/packagename",
-    "description": "Short description about this library",
-    "license": "Apache-2.0",
+    "name": "buonzz/composer-library-template",
+    "description": "Boilerplate package for creating other packages.",
+    "keywords": ["template", "composer", "package"],
+    "license": "DBAD",
     "authors": [
         {
-            "name": "Your Name",
-            "email": "youremail@mailserver.com"
+            "name": "Darwin Biler",
+            "email": "buonzz@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "type": "project",
     "require": {
-		"php": ">=5.3.0"
+		"php": ">=5.4"
     },
 	"require-dev": {
-        "phpdocumentor/phpdocumentor": "2.*",
-		"phpunit/phpunit": "3.7.*"
+		"phpunit/phpunit": "5.2.*"
     },
 	"autoload": {
-        "psr-0": {
-            "VendorName\\PackageName\\": "src/"
+        "psr-4": {
+            "Buonzz\\Template\\": "src/"
         }
     }
 }

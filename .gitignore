@@ -3,6 +3,7 @@
 
 # Project specific
 vendor/
+composer.lock
 
 # OS specific
 .DS_Store/

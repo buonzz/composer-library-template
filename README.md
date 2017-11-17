@@ -1,15 +1,13 @@
 # Composer Package Template
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
-
 If you are trying to create a new PHP Composer package, whether it is going to be submitted to [packagist.org](packagist.org) 
 or just to exist in your Github account, this template package of files will surely help you make the process a lot easier 
 and faster.
 
 ## Requirements
 
-* PHP >= 7.0
-* composer
+* PHP >= 7.0;
+* composer.
 
 ## Features
 

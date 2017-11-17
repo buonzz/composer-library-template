@@ -1,9 +1,10 @@
 # IDE specific
-.idea/
+.idea
 
 # Project specific
-vendor/
+vendor
+build
 composer.lock
 
 # OS specific
-.DS_Store/
+.DS_Store

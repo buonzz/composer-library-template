@@ -1,6 +1,7 @@
 {
-    "name": "GinoPane/composer-package-template",
+    "name": "ginopane/composer-package-template",
     "description": "Template composer package for creating other packages",
+    "homepage": "http://github.com/GinoPane/composer-package-template",
     "keywords": [
         "template",
         "composer",

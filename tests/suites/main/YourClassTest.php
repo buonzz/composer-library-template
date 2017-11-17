@@ -1,14 +1,15 @@
 <?php 
 
 /**
-*  Corresponding Class to test YourClass class
+*  Corresponding class to test YourClass class
 *
-*  For each class in your library, there should be a corresponding Unit-Test for it
+*  For each class in your library, there should be a corresponding unit test
 *  Unit-Tests should be as much as possible independent from other test going on.
 *
 *  @author yourname
 */
-class YourClassTest extends PHPUnit_Framework_TestCase{
+class YourClassTest extends PHPUnit\Framework\TestCase
+{
 	
   /**
   * Just check if the YourClass has no syntax error 

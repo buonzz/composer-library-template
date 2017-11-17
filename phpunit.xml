@@ -1,12 +1,34 @@
-<phpunit 	bootstrap="vendor/autoload.php"			
-			colors="true"
-			convertErrorsToExceptions="true"
-			convertNoticesToExceptions="true"
-			convertWarningsToExceptions="true"
-			stopOnFailure="true">
-			<testsuites>
-				<testsuite name="Unit Tests">
-					<directory>tests</directory>
-				</testsuite>
-			</testsuites>
+<phpunit
+		colors="true"
+		bootstrap="./tests/bootstrap.php"
+		convertErrorsToExceptions="true"
+		convertNoticesToExceptions="false"
+		convertWarningsToExceptions="false"
+		beStrictAboutTestsThatDoNotTestAnything="false"
+		strict="true"
+		stopOnError="false"
+		stopOnFailure="false"
+		stopOnIncomplete="false"
+		stopOnSkipped="false"
+		stopOnRisky="false"
+>
+	<testsuites>
+		<testsuite name="Main tests">
+			<directory>./tests/suites/main/</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="false">
+			<directory suffix=".php">./src/</directory>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="coverage-html"
+			 target="./build/output/coverage/html"
+			 lowUpperBound="35"
+			 highLowerBound="70"/>
+		<log type="coverage-text"
+			 target="php://stdout"
+			 showUncoveredFiles="true"/>
+	</logging>
 </phpunit>

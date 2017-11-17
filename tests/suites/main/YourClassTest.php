@@ -1,5 +1,7 @@
 <?php 
 
+use GinoPane\Template\YourClass;
+
 /**
 *  Corresponding class to test YourClass class
 *
@@ -10,31 +12,41 @@
 */
 class YourClassTest extends PHPUnit\Framework\TestCase
 {
-	
-  /**
-  * Just check if the YourClass has no syntax error 
-  *
-  * This is just a simple check to make sure your library has no syntax error. This helps you troubleshoot
-  * any typo before you even use this library in a real project.
-  *
-  */
-  public function testIsThereAnySyntaxError(){
-	$var = new Buonzz\Template\YourClass;
-	$this->assertTrue(is_object($var));
-	unset($var);
-  }
-  
-  /**
-  * Just check if the YourClass has no syntax error 
-  *
-  * This is just a simple check to make sure your library has no syntax error. This helps you troubleshoot
-  * any typo before you even use this library in a real project.
-  *
-  */
-  public function testMethod1(){
-	$var = new Buonzz\Template\YourClass;
-	$this->assertTrue($var->method1("hey") == 'Hello World');
-	unset($var);
-  }
-  
+    /**
+     * Just check if the YourClass has no syntax errors
+     */
+    public function testIsThereAnySyntaxError()
+    {
+        $object = new YourClass();
+
+        $this->assertTrue(is_object($object));
+    }
+
+    /**
+     * Test the only existing method of the class
+     *
+     * @dataProvider getNamesAndGreetings
+     *
+     * @param $name
+     * @param $expected
+     */
+    public function testSayHello($name, $expected)
+    {
+        $object = new YourClass();
+
+        $this->assertEquals($expected, $object->sayHello($name));
+    }
+
+    /**
+     * Data for sayHello
+     *
+     * @return array
+     */
+    public function getNamesAndGreetings(): array
+    {
+        return [
+            ['world', "Hello World!"],
+            ['World', "Hello World!"]
+        ];
+    }
 }

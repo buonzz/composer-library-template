@@ -3,7 +3,6 @@
 
 # Project specific
 vendor
-build
 
 # OS specific
 .DS_Store

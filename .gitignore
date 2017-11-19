@@ -4,7 +4,6 @@
 # Project specific
 vendor
 build
-composer.lock
 
 # OS specific
 .DS_Store

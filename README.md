@@ -1,17 +1,26 @@
-# Composer Package Template
+Composer Package Template
+============
+
+[![Latest Stable Version](https://poser.pugx.org/gino-pane/composer-package-template/v/stable)](https://packagist.org/packages/gino-pane/composer-package-template)
+[![License](https://poser.pugx.org/gino-pane/composer-package-template/license)](https://packagist.org/packages/gino-pane/composer-package-template)
+[![composer.lock](https://poser.pugx.org/gino-pane/composer-package-template/composerlock)](https://packagist.org/packages/gino-pane/composer-package-template)
+[![Total Downloads](https://poser.pugx.org/gino-pane/composer-package-template/downloads)](https://packagist.org/packages/gino-pane/composer-package-template)
 
 If you are trying to create a new PHP Composer package, whether it is going to be submitted to [packagist.org](packagist.org) 
 or just to exist in your Github account, this template package of files will surely help you make the process a lot easier 
 and faster.
 
-## Requirements
+Requirements
+------------
 
 * PHP >= 7.0;
 * composer.
 
-## Features
+Features
+--------
 
 * PSR-4 autoloading compliant structure;
+* PSR-2 compliant code style;
 * Unit-Testing with PHPUnit 6;
 * Comprehensive guide and tutorial;
 * Easy to use with any framework or even a plain php file;
@@ -20,7 +29,7 @@ and faster.
 Installation
 ============
 
-    composer create-project ginopane/composer-package-template yourproject
+    composer create-project gino-pane/composer-package-template yourproject
     
 This will create a basic project structure for you:
 
@@ -34,18 +43,20 @@ This will create a basic project structure for you:
 
 Please refer to original [article](http://www.darwinbiler.com/creating-composer-package-library/) for more information.
 
-## Useful Tools
+Useful Tools
+============
 
-### Code sniffer tool:
+Code sniffer tool:
+------------------
 
  ```php vendor/squizlabs/php_codesniffer/scripts/phpcs -s --report-full=phpcs.txt --standard=PSR2 src/```
 
-### Code auto-fixer:
+Code auto-fixer:
+----------------
 
  ```php vendor/squizlabs/php_codesniffer/scripts/phpcbf --standard=PSR2 src/```    
  
-### PhpUnit:
+PhpUnit:
+--------
 
  ```php vendor/phpunit/phpunit/phpunit -c build/phpunit.xml```
-
-I encourage that you put more information on this readme file instead of leaving it as is. See [How to make a README file](http://www.darwinbiler.com/designing-and-making-the-readme-file-for-your-github-repository/) for more info.

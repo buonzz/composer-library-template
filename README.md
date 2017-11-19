@@ -33,9 +33,9 @@ Installation
     
 This will create a basic project structure for you:
 
-* **src** is where your codes will live in, each class will need to reside in its own file inside this folder;
-* **tests** each class that you write in src folder needs to be tested before it was even "included" into somewhere else. So basically we have tests classes there to test other classes;
-* **build** is used to store code coverage output by default;
+* **/src** is where your codes will live in, each class will need to reside in its own file inside this folder;
+* **/tests** each class that you write in src folder needs to be tested before it was even "included" into somewhere else. So basically we have tests classes there to test other classes;
+* **/build** is used to store code coverage output by default;
 * **.gitignore** there are certain files that we don't want to publish in Git, so we just add them to this fle for them to "get ignored by git";
 * **LICENSE** terms of how much freedom other programmers is allowed to use this library;
 * **README.md** it is a mini documentation of the library, this is usually the "home page" of your repo if you published it on GitHub and Packagist;

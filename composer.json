@@ -22,6 +22,11 @@
             "role": "Developer"
         }
     ],
+    "support": {
+        "source": "http://github.com/GinoPane/composer-package-template",
+        "docs": "https://github.com/GinoPane/composer-package-template/blob/master/README.md",
+        "issues": "https://github.com/GinoPane/composer-package-template/issues"
+    },
     "type": "project",
     "require": {
         "php": "^7.0"

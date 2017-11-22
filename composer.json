@@ -37,7 +37,7 @@
         "phpmd/phpmd" : "^2.6",
         "phpdocumentor/phpdocumentor" : "^2.0"
     },
-	"autoload": {
+    "autoload": {
         "psr-4": {
             "GinoPane\\Template\\": "src/"
         }

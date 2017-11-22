@@ -1,16 +1,17 @@
 <?php 
 
-use GinoPane\Template\YourClass;
+namespace GinoPane\Template;
+
+use PHPUnit\Framework\TestCase;
 
 /**
 *  Corresponding class to test YourClass class
 *
 *  For each class in your library, there should be a corresponding unit test
-*  Unit-Tests should be as much as possible independent from other test going on.
 *
 *  @author yourname
 */
-class YourClassTest extends PHPUnit\Framework\TestCase
+class YourClassTest extends TestCase
 {
     /**
      * Just check if the YourClass has no syntax errors

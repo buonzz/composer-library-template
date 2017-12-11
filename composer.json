@@ -1,13 +1,16 @@
 {
     "name": "gino-pane/composer-package-template",
-    "description": "Template composer package for creating other packages",
+    "description": "Basic composer package template for creating other packages.",
     "homepage": "http://github.com/GinoPane/composer-package-template",
     "keywords": [
         "template",
         "composer",
         "package",
         "skeleton",
-        "boilerplate"
+        "boilerplate",
+        "composer template",
+        "package template",
+        "composer package template"
     ],
     "license": "MIT",
     "authors": [
@@ -41,5 +44,16 @@
         "psr-4": {
             "GinoPane\\Template\\": "src/"
         }
+    },
+    "scripts": {
+        "test": [
+            "@php vendor/bin/phpunit"
+        ],
+        "psr2check": [
+            "@php vendor/bin/phpcs --standard=PSR2 src/"
+        ],
+        "psr2autofix": [
+            "@php vendor/bin/phpcbf --standard=PSR2 src/"
+        ]
     }
 }

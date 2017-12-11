@@ -25,6 +25,6 @@ class YourClass
      */
     public function sayHello(string $name): string
     {
-       return sprintf("Hello %s!", ucfirst($name));
+        return sprintf("Hello %s!", ucfirst($name));
     }
 }

@@ -76,7 +76,7 @@ Useful Tools
 Running tests with Composer:
 ----------------------------
 
-```composer test```
+
 
 Code sniffer tool:
 ------------------
@@ -99,4 +99,8 @@ Code auto-fixer:
 PhpUnit:
 --------
 
- ```php vendor/phpunit/phpunit/phpunit -c build/phpunit.xml```
+ ```php vendor/bin/phpunit```
+ 
+ or 
+ 
+ ```composer test```

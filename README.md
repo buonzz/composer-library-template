@@ -78,7 +78,7 @@ Running tests with Composer:
 
 
 
-Code sniffer tool:
+Code Sniffer Tool:
 ------------------
 
  ```php vendor/bin/phpcs --standard=PSR2 src/```
@@ -87,7 +87,7 @@ Code sniffer tool:
  
  ```composer psr2check```
 
-Code auto-fixer:
+Code Auto-fixer:
 ----------------
 
  ```php vendor/bin/phpcbf --standard=PSR2 src/``` 
@@ -96,7 +96,7 @@ Code auto-fixer:
  
  ```composer psr2autofix```
  
-PhpUnit:
+Running Tests:
 --------
 
  ```php vendor/bin/phpunit```
@@ -104,3 +104,12 @@ PhpUnit:
  or 
  
  ```composer test```
+ 
+Building Docs:
+--------
+
+ ```php vendor/bin/phpdoc -d "src" -t "docs"```
+ 
+ or 
+ 
+ ```composer docs```

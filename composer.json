@@ -54,6 +54,9 @@
         ],
         "psr2autofix": [
             "@php vendor/bin/phpcbf --standard=PSR2 src/"
+        ],
+        "docs": [
+            "@php vendor/bin/phpdoc -d \"src\" -t \"docs\""
         ]
     }
 }

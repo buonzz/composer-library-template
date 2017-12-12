@@ -50,10 +50,14 @@ Please refer to original [article](http://www.darwinbiler.com/creating-composer-
 Useful Tools
 ============
 
-Running tests with Composer:
-----------------------------
+Running Tests:
+--------
 
-
+ ```php vendor/bin/phpunit```
+ 
+ or 
+ 
+ ```composer test```
 
 Code Sniffer Tool:
 ------------------
@@ -73,14 +77,6 @@ Code Auto-fixer:
  
  ```composer psr2autofix```
  
-Running Tests:
---------
-
- ```php vendor/bin/phpunit```
- 
- or 
- 
- ```composer test```
  
 Building Docs:
 --------

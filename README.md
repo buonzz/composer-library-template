@@ -47,29 +47,6 @@ This will create a basic project structure for you:
 
 Please refer to original [article](http://www.darwinbiler.com/creating-composer-package-library/) for more information.
 
-Changelog
-=========
-
-To keep track, please refer to [CHANGELOG.md](https://github.com/GinoPane/composer-package-template/blob/master/CHANGELOG.md).
-
-Contributing
-============
-
-1. Fork it.
-2. Create your feature branch (git checkout -b my-new-feature).
-3. Make your changes.
-4. Run the tests, adding new ones for your own code if necessary (phpunit).
-5. Commit your changes (git commit -am 'Added some feature').
-6. Push to the branch (git push origin my-new-feature).
-7. Create new pull request.
-
-Also please refer to [CONTRIBUTION.md](https://github.com/GinoPane/composer-package-template/blob/master/CONTRIBUTION.md).
-
-License
-=======
-
-Please refer to [LICENSE](https://github.com/GinoPane/composer-package-template/blob/master/LICENSE).
-
 Useful Tools
 ============
 
@@ -113,3 +90,26 @@ Building Docs:
  or 
  
  ```composer docs```
+
+Changelog
+=========
+
+To keep track, please refer to [CHANGELOG.md](https://github.com/GinoPane/composer-package-template/blob/master/CHANGELOG.md).
+
+Contributing
+============
+
+1. Fork it.
+2. Create your feature branch (git checkout -b my-new-feature).
+3. Make your changes.
+4. Run the tests, adding new ones for your own code if necessary (phpunit).
+5. Commit your changes (git commit -am 'Added some feature').
+6. Push to the branch (git push origin my-new-feature).
+7. Create new pull request.
+
+Also please refer to [CONTRIBUTION.md](https://github.com/GinoPane/composer-package-template/blob/master/CONTRIBUTION.md).
+
+License
+=======
+
+Please refer to [LICENSE](https://github.com/GinoPane/composer-package-template/blob/master/LICENSE).

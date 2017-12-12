@@ -53,39 +53,39 @@ Useful Tools
 Running Tests:
 --------
 
- ```php vendor/bin/phpunit```
+    php vendor/bin/phpunit
  
  or 
  
- ```composer test```
+    composer test
 
 Code Sniffer Tool:
 ------------------
 
- ```php vendor/bin/phpcs --standard=PSR2 src/```
+    php vendor/bin/phpcs --standard=PSR2 src/
  
  or
  
- ```composer psr2check```
+    composer psr2check
 
 Code Auto-fixer:
 ----------------
 
- ```php vendor/bin/phpcbf --standard=PSR2 src/``` 
+    php vendor/bin/phpcbf --standard=PSR2 src/ 
     
  or
  
- ```composer psr2autofix```
+    composer psr2autofix
  
  
 Building Docs:
 --------
 
- ```php vendor/bin/phpdoc -d "src" -t "docs"```
+    php vendor/bin/phpdoc -d "src" -t "docs"
  
  or 
  
- ```composer docs```
+    composer docs
 
 Changelog
 =========

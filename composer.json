@@ -2,7 +2,7 @@
     "name": "buonzz/composer-library-template",
     "description": "Boilerplate package for creating other packages.",
     "keywords": ["template", "composer", "package"],
-    "license": "DBAD",
+    "license": "MIT",
     "authors": [
         {
             "name": "Darwin Biler",

@@ -20,5 +20,10 @@
         "psr-4": {
             "Buonzz\\Template\\": "src/"
         }
-    }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Buonzz\\Template\\Tests\\": "tests/"
+        }
+    }	
 }

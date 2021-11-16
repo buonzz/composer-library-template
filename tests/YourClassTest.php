@@ -1,4 +1,7 @@
 <?php 
+
+namespace Buonzz\Template\Tests;
+
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -67,8 +67,7 @@ class MailtrapEmailTest extends TestCase
     $mailer = new Mailtrap\MailtrapEmail();
     $this->assertTrue($mailer->to("email@test.to"));
     $this->assertFalse($mailer->to('wrongemail@test'));
-
-    $this->assertSame($mailer->getRecipients(), ['name' => '', 'email' => 'email@test.to']);
+    $this->assertSame($mailer->getRecipients(), [['name' => '', 'email' => 'email@test.to']]);
 
     $this->assertTrue($mailer->to("John Doe <email2@test.to>"));
     $this->assertFalse($mailer->to("John Doe <email2@test>"));
@@ -83,10 +82,9 @@ class MailtrapEmailTest extends TestCase
     $mailer = new Mailtrap\MailtrapEmail();
     $this->assertTrue($mailer->to('test@mail1.com, test@mail2.com, test@mail3.com'));
     $this->assertSame($mailer->getRecipients(), 
-          [
-          ['name' => '', 'email' => 'test@mail1.com'],
+          [['name' => '', 'email' => 'test@mail1.com'],
           ['name' => '', 'email' => 'test@mail2.com'],
-          ['name' => '', 'email' => 'test@mail2.com'],
+          ['name' => '', 'email' => 'test@mail3.com'],
         ]);
     
     $this->assertTrue($mailer->to('New name <test@mailname1.com>, New name 2 <test@mailname2.com>'));
@@ -94,7 +92,7 @@ class MailtrapEmailTest extends TestCase
           [
           ['name' => '', 'email' => 'test@mail1.com'],
           ['name' => '', 'email' => 'test@mail2.com'],
-          ['name' => '', 'email' => 'test@mail2.com'],
+          ['name' => '', 'email' => 'test@mail3.com'],
           ['name' => 'New name', 'email' => 'test@mailname1.com'],
           ['name' => 'New name 2', 'email' => 'test@mailname2.com'],
         ]);

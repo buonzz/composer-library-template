@@ -16,11 +16,11 @@ class MailtrapEmail
    /** @var string|boolean API key for mailtrap*/
    private $api_key = '';
 
-   /**  @var array string who must receive email, string like email@site.com <John Doe> */
+   /**  @var array string who must receive email, string like John Doe <email@site.com> */
    private $sender = [];
 
-   /**  @var string who must get email, string like email@site.com <John Doe> */
-   private $recipient = [];
+   /**  @var string who must get email, string like John Doe <email@site.com> or email@site.com or multiple */
+   private $recipients = [];
 
    /**  @var string Subject of this email */
    private $subject = '';
@@ -45,28 +45,86 @@ class MailtrapEmail
     *  or 'name<email@test.com>, name<email@test.com>' and parse they into array ['name<email@test.com>'] 
     * @return array output as array ['name<email@test.com>', 'name<email@test.com>']
     */
-   private function parseEmailRecepients($string) {
-      $responce = [];
+   private function parseEmailRecipients($string) {
+      $response = [];
 
-      preg_match_all('/(?:"?([^"@<>]*)"?\s)?(?:<?([^@\s]+@[^@\s]+\.[^@\s]+)>?)/i', $string, $matches);
-      if ($matches && count($matches) > 1){
-         foreach ($matches as $match) {
-            if ((bool) filter_var($match[2], FILTER_VALIDATE_EMAIL)) {
-               array_push($responce, ['name' => $match[1], 'email' => trim($match[2])]);
+      preg_match_all('/(?:"?([^"@<>,]*)"?\s)?(?:<?([^@\s<,]+@[^@\s]+\.[^@\s>,]+)>?)/im', $string, $matches);
+      if ($matches && count($matches[2]) > 0){
+         foreach ($matches[2] as $i => $match) {
+            if ($this->validateEmail($match)) {
+               array_push($response, ['name' => trim($matches[1][$i]), 'email' => trim($match)]);
             }
          }
       }
 
-      return $responce;
+      return $response;
+   }
+
+
+   /**
+    * Default function to validate if we are matched email
+    * @var string Input email
+    * @return boolean 
+    */
+   private function validateEmail($email) {
+      return !! filter_var($email, FILTER_VALIDATE_EMAIL);
    }
 
    /**
-    * Methot to get current actual API key for object
+    * Method to set current actual API key for object
+    * (possible add some check about key rules: length or format)
+    * @param string acceptable key for 
+    * @return boolean
     */
+   public function setApiKey($key)
+    {
+      $this->api_key = $key;
+      return true;
+    }
 
+   /**
+    * Method to get current actual API key for object
+   * @return string api key
+    */
    public function getApiKey()
     {
       return $this->api_key;
+    }
+
+   /**
+    * Method to set sender of email
+    *
+    * @param string|array $param1 string or array of strings name and email like "John Doe <email@test.com>" or "email@test.com" 
+    *
+    * @return boolean Return true if some of emails was added to array and false if no one email was founded
+    */
+   public function from($email)
+   {
+      if (gettype($email) === 'array') {
+         if (isset($email['email']) && $this->validateEmail($email['email'])) {
+            $add = [];
+            $add['name'] = $email['name'] ?: '';
+            $add['email'] = $email['email'] ?: '';
+            $this->sender = $add;
+            return true;
+         };
+      }
+      if (gettype($email) === 'string') {
+         $email_add = $this->parseEmailRecipients($email);
+         if (count($email_add)) {
+            $this->sender = $email_add[0];
+            return true;
+         }
+      }
+      return false;
+   }
+
+   /**
+    * @return string sender array 
+    */
+
+    public function getSenders() {
+      return $this->sender;
     }
 
    /**
@@ -74,29 +132,42 @@ class MailtrapEmail
     *
     * @param string|array $param1 string or array of strings name and email like "John Doe <email@test.com>" or "email@test.com" 
     *
-    * @return string
+    * @return boolean Return true if some of emails was added to array and false if no one email was founded
     */
-   public function from($to)
+   public function to($to)
    {
-      $to_add = [];
       if (gettype($to) === 'array') {
-         foreach($to as $recipient) {
-            $parsed = $this->parseEmailRecepients($recipient);
-            array_push($to_add, $parsed);
+         $add = [];
+         foreach ($to as $k => $email) {
+            if (gettype($email) === 'array' && $this->validateEmail($email['email'])) {
+               array_push($add, ['name' => $email['name'], 'email' => $email['email']]);
+            }
+            if (gettype($email) === 'string' && $this->validateEmail($email)) {
+               array_push($add, ['name' => '', 'email' => $email]);
+            }
+         }
+         if (count($add)) {
+            $this->recipients = array_merge($this->recipients, $add);
+            return true;
          }
       }
       if (gettype($to) === 'string') {
-         $to_add = $this->parseEmailRecepients($to);
-      }
-
-      if (count($to_add)) {
-         $this->sender = array_merge($this->sender, $to_add);
-         return true;
+         $add = $this->parseEmailRecipients($to);
+         if (count($add)) {
+            $this->recipients = array_merge($this->recipients, $add);
+            return true;
+         }
       }
       return false;
    }
 
    /**
-    * @return array All recepients array 
+    * @return string All recipients array 
     */
+
+    public function getRecipients() {
+      return $this->recipients;
+    }
+
+
 }

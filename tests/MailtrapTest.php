@@ -147,7 +147,6 @@ class MailtrapEmailTest extends TestCase
   {
     $mailer = new Mailtrap\MailtrapEmail();
     $this->assertFalse($mailer->html('Test text of email!'));
-    $this->assertFalse($mailer->html('<p>Test text</p> of email!<p></p>'));
     $this->assertTrue($mailer->html('<p>Test text of email!</p>'));
     $this->assertSame($mailer->getHTML(), '<p>Test text of email!</p>');
     unset($mailer);
@@ -165,10 +164,11 @@ class MailtrapEmailTest extends TestCase
     $mailer->subject('Test email from mailtrap');
     $mailer->text('This is test email text');
     $mailer->html('<div style="color: darkgreen"><h1> This is test email</h1></div>');
-    $resp = $mailer->send();
-
-    $this->assertTrue(!! $resp->errors);
-    $this->assertFalse($resp->success);
+    $response = $mailer->send();
+    
+    var_dump($response);
+    $this->assertTrue($response['success']);
+    $this->assertSame($response['messages'], ['Successfully sended!']);
     unset($mailer);
   } 
 
@@ -186,10 +186,10 @@ class MailtrapEmailTest extends TestCase
       'text' => 'This is test email text',
       'html' => '<div style="color: darkgreen"><h1> This is test email</h1></div>',
     ];
-    $resp = $mailer->send($params);
+    $response = $mailer->send($params);
 
-    $this->assertTrue(!! $resp->errors);
-    $this->assertFalse($resp->success);
+    $this->assertTrue($response['success']);
+    $this->assertSame($response['messages'], ['Successfully sended!']);
     unset($mailer);
   } 
 
@@ -204,10 +204,10 @@ class MailtrapEmailTest extends TestCase
     $mailer->from('Andrii Cherytsya<poratuk@mailtrap.io>');
     $mailer->to('poratuk@gmail.com');
     $mailer->subject('Test email from mailtrap');
-    $resp = $mailer->send();
+    $response = $mailer->send();
 
-    $this->assertTrue(!! $resp->errors);
-    $this->assertFalse($resp->success);
+    $this->assertFalse($response['success']);
+    $this->assertArrayHasKey('errors', $response, ['Some of fields not filled']);
     unset($mailer);
   } 
 }

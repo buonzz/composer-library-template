@@ -28,7 +28,7 @@ class MailtrapEmailTest extends TestCase
   {
     $mailer = new Mailtrap\MailtrapEmail($this->mailtrap_api_key);
     $this->assertTrue(is_object($mailer));
-    $this->assertSame('API_KEY', $mailer->getApiKey());
+    $this->assertSame($this->mailtrap_api_key, $mailer->getApiKey());
     unset($mailer);
   }
   
@@ -44,8 +44,8 @@ class MailtrapEmailTest extends TestCase
     $this->assertSame($mailer->getSenders(), ['name' => '', 'email' => 'email@test.to']);
 
     $this->assertTrue($mailer->from("John Doe <email2@test.to>"));
-    $this->assertFalse($mailer->from("email@test <John Doe>"));
-    $this->assertFalse($mailer->from("email@test <>"));
+    $this->assertFalse($mailer->from("John Doe <email@test>"));
+    $this->assertFalse($mailer->from("<email@test>"));
     $this->assertSame($mailer->getSenders(), ['name' => 'John Doe', 'email' => 'email2@test.to']);
     unset($mailer);
   } 
@@ -159,7 +159,7 @@ class MailtrapEmailTest extends TestCase
    * 
    * Test for sending email via Mailtrap API with one param only
    */
-   public function testSendEmail()
+   public function testSendEmailWithParams()
   {
     $mailer = new Mailtrap\MailtrapEmail();
     $params = [

@@ -41,18 +41,22 @@ class MailtrapEmailTest extends TestCase
     $mailer = new Mailtrap\MailtrapEmail();
     $this->assertTrue($mailer->from("email@test.to"));
     $this->assertFalse($mailer->from('wrongemail@test'));
-    $this->assertSame(['email@test.to'], $mailer->getSendes());
+    $this->assertSame($mailer->getSenders(), ['name' => '', 'email' => 'email@test.to']);
 
-    $this->assertTrue($mailer->from("email@test.to <John Doe>"));
+    $this->assertTrue($mailer->from("John Doe <email2@test.to>"));
     $this->assertFalse($mailer->from("email@test <John Doe>"));
     $this->assertFalse($mailer->from("email@test <>"));
+    $this->assertSame($mailer->getSenders(), ['name' => 'John Doe', 'email' => 'email2@test.to']);
     unset($mailer);
   } 
 
 
   /**
   * Just check if the Mailer has no syntax error when getting recepients 
-  *
+  * 1 Simple email
+  * 2 Email with name
+  * 3 Multiple recepients
+  * 4 Multiple recepients with names
   */
   public function testSetRecepients()
   {
@@ -60,16 +64,33 @@ class MailtrapEmailTest extends TestCase
     $this->assertTrue($mailer->to("email@test.to"));
     $this->assertFalse($mailer->to('wrongemail@test'));
 
-    $this->assertSame(['email@test.to'], $mailer->getRecepients());
+    $this->assertSame($mailer->getRecepients(), ['name' => '', 'email' => 'email@test.to']);
 
-    $this->assertTrue($mailer->to("John Doe <email@test.to>"));
-    $this->assertFalse($mailer->to("John Doe <email@test>"));
+    $this->assertTrue($mailer->to("John Doe <email2@test.to>"));
+    $this->assertFalse($mailer->to("John Doe <email2@test>"));
     $this->assertFalse($mailer->to("email@test <>"));
     
-    $this->assertSame(['email@test.to', 'John Doe <email@test.to>'], $mailer->getRecepients());
+    $this->assertSame($mailer->getRecepients(), [['name' => '', 'email' => 'email@test.to'], ['name' => 'John Doe', 'email' => 'email2@test.to']]);
 
     $this->assertTrue($mailer->to('test@mail1.com, test@mail2.com, test@mail3.com'));
-    $this->assertSame(['email@test.to', 'John Doe <email@test.to>', 'test@mail1.com', 'test@mail2.com', 'test@mail3.com'], $mailer->getRecepients());
+    $this->assertSame($mailer->getRecepients(), 
+          [['name' => '', 'email' => 'email@test.to'], 
+          ['name' => 'John Doe', 'email' => 'email2@test.to'],
+          ['name' => '', 'email' => 'test@mail1.com'],
+          ['name' => '', 'email' => 'test@mail2.com'],
+          ['name' => '', 'email' => 'test@mail2.com'],
+        ]);
+    
+    $this->assertTrue($mailer->to('New name <test@mailname1.com>, New name 2 <test@mailname2.com>'));
+    $this->assertSame($mailer->getRecepients(), 
+          [['name' => '', 'email' => 'email@test.to'], 
+          ['name' => 'John Doe', 'email' => 'email2@test.to'],
+          ['name' => '', 'email' => 'test@mail1.com'],
+          ['name' => '', 'email' => 'test@mail2.com'],
+          ['name' => '', 'email' => 'test@mail2.com'],
+          ['name' => 'New name', 'email' => 'test@mailname1.com'],
+          ['name' => 'New name 2', 'email' => 'test@mailname2.com'],
+        ]);
 
     unset($mailer);
   } 

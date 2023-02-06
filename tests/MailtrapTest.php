@@ -154,6 +154,29 @@ class MailtrapEmailTest extends TestCase
     $this->assertFalse($resp->success);
     unset($mailer);
   } 
+
+  /**
+   * 
+   * Test for sending email via Mailtrap API with one param only
+   */
+   public function testSendEmail()
+  {
+    $mailer = new Mailtrap\MailtrapEmail();
+    $params = [
+      'from' => 'poratuk@mailtrap.io',
+      'to' => 'poratuk@gmail.com',
+      'subject' => 'Test email from mailtrap',
+      'text' => 'This is test email text',
+      'html' => '<div style="color: darkgreen"><h1> This is test email</h1></div>',
+    ];
+    $resp = $mailer->send($params);
+
+    $this->assertTrue(!! $resp->errors);
+    $this->assertFalse($resp->success);
+    unset($mailer);
+  } 
+
+
   /**
    * 
    * Test for sending current email via Mailtrap API

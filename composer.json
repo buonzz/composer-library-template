@@ -1,7 +1,7 @@
 {
-    "name": "buonzz/composer-library-template",
-    "description": "Boilerplate package for creating other packages.",
-    "keywords": ["template", "composer", "package"],
+    "name": "poratuk/mailtrap-test-libriary",
+    "description": "Test task for create API for mailtrap",
+    "keywords": ["Test"],
     "license": "MIT",
     "authors": [
         {

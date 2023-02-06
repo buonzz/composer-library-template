@@ -160,15 +160,14 @@ class MailtrapEmailTest extends TestCase
   {
     $mailer = new Mailtrap\MailtrapEmail();
     $mailer->from('Andrii Cherytsya<poratuk@mailtrap.io>');
-    $mailer->to('poratuk@gmail.com');
+    $mailer->to('John Doe<john_doe@example.com>');
     $mailer->subject('Test email from mailtrap');
     $mailer->text('This is test email text');
     $mailer->html('<div style="color: darkgreen"><h1> This is test email</h1></div>');
     $response = $mailer->send();
     
-    var_dump($response);
     $this->assertTrue($response['success']);
-    $this->assertSame($response['messages'], ['Successfully sended!']);
+    $this->assertNotEmpty($response['message_ids']);
     unset($mailer);
   } 
 
@@ -189,7 +188,7 @@ class MailtrapEmailTest extends TestCase
     $response = $mailer->send($params);
 
     $this->assertTrue($response['success']);
-    $this->assertSame($response['messages'], ['Successfully sended!']);
+    $this->assertNotEmpty($response['message_ids']);
     unset($mailer);
   } 
 
